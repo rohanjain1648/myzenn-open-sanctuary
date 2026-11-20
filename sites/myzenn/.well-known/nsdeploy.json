@@ -1,0 +1,27 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "myzenn_sanctuary",
+      "front_man": "mypal",
+      "aliases": [
+        "myzenn_sanctuary",
+        "mypal"
+      ],
+      "url": "myzenn_sanctuary"
+    },
+    {
+      "network": "myzenn_calm",
+      "front_man": "calm_companion",
+      "aliases": [
+        "myzenn_calm",
+        "calm_companion"
+      ],
+      "url": "agents/myzenn_calm"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

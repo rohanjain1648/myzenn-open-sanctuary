@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "networks": {
+    "exam_planner": {
+      "myzenn_calm": "https://myzenn-open-sanctuary.vercel.app/agents/myzenn_calm"
+    }
+  }
+}

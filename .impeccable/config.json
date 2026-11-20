@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/partner/index.html"
+        ],
+        "createdAt": "2026-11-14T17:45:04.272Z",
+        "reason": "Claude decided: the static scan sees the runtime mount #agent-app with empty slots flush to its border; the runtime fills them with padded header, chat and drawers, and a live-URL scan of the page reports no cramped-padding"
+      }
+    ]
+  }
+}

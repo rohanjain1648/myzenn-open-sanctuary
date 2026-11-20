@@ -1,0 +1,82 @@
+{
+  "brand": "MyZenn calm companion",
+  "networks": [
+    {
+      "name": "myzenn_calm",
+      "front_man": "calm_companion",
+      "hocon": "./myzenn_calm.network.json",
+      "description": "MyZenn's calm companion for other agentic websites. It runs in your visitor's browser, on your router, and returns one short self-help technique or the right helplines.",
+      "tags": [
+        "wellbeing",
+        "self-help",
+        "portable-network"
+      ],
+      "sample_queries": [
+        "A student has an exam tomorrow. Their heart is racing and they cannot focus.",
+        "Someone feels bad but cannot say how. Help them name the feeling.",
+        "A person keeps putting off a task and feels stuck.",
+        "Someone says they do not want to live any more."
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1",
+    "note": "Informational only. A site that loads this network runs it on its own router."
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "myzenn_calm contacts no other sites."
+  },
+  "private_context": {
+    "reads": [
+      "country"
+    ],
+    "note": "support_lines reads the person's country, only if the calling site's allow rule passes it, to pick the right helplines. Accepted forms: IN or India, US or United States. myzenn_calm reads no other private field."
+  },
+  "coded_tools": {
+    "bundle": "./myzenn_calm.tools.js",
+    "integrity": "sha384-ZrEE0taUMpcdkhbiHsKgVrbGZncWQYN6LSt7bCbS48nQojbPeIiSU30ugejTM+Ph"
+  },
+  "theme": {
+    "primary": "#007e7d"
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "myzenn_calm",
+    "front_man": "calm_companion",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "myzenn_calm",
+        "front_man": "calm_companion",
+        "aliases": [
+          "myzenn_calm",
+          "calm_companion",
+          "myzenn"
+        ],
+        "url": "myzenn_calm"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": false,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false,
+    "note": "A portable network for other sites to load. It has no page of its own and no website actions."
+  }
+}

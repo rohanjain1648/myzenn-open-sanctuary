@@ -1,0 +1,29 @@
+{
+  "brand": "Spec check fixture",
+  "networks": [
+    {
+      "name": "sealed",
+      "front_man": "front",
+      "hocon": "./sealed.network.json"
+    }
+  ],
+  "llm_router": {
+    "base_url": "browser://mock",
+    "mock": true,
+    "byok_router": "browser://mock",
+    "note": "Deterministic mock: calls each tool once. Needs no key."
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "The checks page trusts its own origin at run time; everything else is denied."
+  },
+  "deployment": {
+    "mode": "static"
+  },
+  "coded_tools": {
+    "bundle": "./sealed.tools.js",
+    "integrity": "sha384-0fscziyjMdaza+oO+Cc5vOM/0sXYmKdbI4FgSiCAvtiB2BFwNPFtkF3dPdUgG7mz"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "exam_planner",
+      "front_man": "study_planner",
+      "aliases": [
+        "exam_planner",
+        "study_planner"
+      ],
+      "url": "exam_planner"
+    }
+  ],
+  "imports": [
+    {
+      "reference": "myzenn_calm",
+      "url": "https://myzenn-open-sanctuary.vercel.app/agents/myzenn_calm",
+      "label": "MyZenn calm companion"
+    }
+  ],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "protocol": "nsdeploy-agent-mcp/v1",
+  "network": "exam_planner",
+  "front_man": "study_planner",
+  "available": false,
+  "reason": "This is a static bundle; a public MCP facade requires an application host."
+}

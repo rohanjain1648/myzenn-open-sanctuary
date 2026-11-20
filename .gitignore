@@ -1,0 +1,13 @@
+# MyZenn company source copied for reference only. Never publish it.
+reference/
+
+# Secrets and local state
+.env
+.env.*
+*.local
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Vercel project links (local only)
+.vercel/

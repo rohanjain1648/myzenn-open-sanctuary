@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyZenn Open Sanctuary</title>
+  <meta name="description" content="Talk to MyPal, name what you feel, and start a calming exercise on the page. An open agent network that runs in your browser, on the AI provider you choose.">
+  <meta name="theme-color" content="#EEF5F4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0A1A1C" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Outfit:wght@100..500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="alternate" type="application/json" href="agent-manifest.json" title="Agent manifest">
+  <script type="module" src="app.js"></script>
+  <script type="module" src="site.js"></script>
+</head>
+<body>
+  <a class="skip" href="#stage">Skip to the exercises</a>
+
+  <header class="topbar">
+    <a class="brand" href="./">
+      <span class="wordmark">MYZENN</span>
+      <span class="brand-sub">Open Sanctuary</span>
+    </a>
+    <nav class="topnav" aria-label="On this page">
+      <a href="#tools">All tools</a>
+      <a href="#how">How it works</a>
+      <a href="#for-sites">For other websites</a>
+    </nav>
+    <button id="open-support" class="btn support-btn" type="button" data-open-support>Get support now</button>
+  </header>
+
+  <main>
+    <div class="sanctuary">
+      <section class="stage-wrap" aria-label="Exercises">
+        <div id="stage" class="stage" aria-live="polite"></div>
+        <div id="stage-suggestion" class="suggestion" role="region" aria-label="Suggestion from MyPal" aria-live="polite" hidden></div>
+        <div id="tool-picker" class="picker" role="group" aria-label="Start an exercise yourself">
+          <button type="button" data-tool="breathing" aria-pressed="false"><span class="picker-name">MyBreath</span><span class="picker-what">Box breathing</span></button>
+          <button type="button" data-tool="grounding" aria-pressed="false"><span class="picker-name">MySenses</span><span class="picker-what">5-4-3-2-1 grounding</span></button>
+          <button type="button" data-tool="wheel" aria-pressed="false"><span class="picker-name">MyWheel</span><span class="picker-what">Name a feeling</span></button>
+          <button type="button" data-tool="anchor" aria-pressed="false"><span class="picker-name">MyAnchor</span><span class="picker-what">Focus on one thing</span></button>
+        </div>
+      </section>
+
+      <section id="assistant" class="pal" aria-labelledby="assistant-heading">
+        <h2 id="assistant-heading" class="visually-hidden">Talk to MyPal</h2>
+        <p id="assistant-status" class="pal-status" role="status">Connecting MyPal. If this message stays, MyPal could not load. Every exercise still works.</p>
+        <div id="agent-app">
+          <div data-ns-slot="header"></div>
+          <div data-ns-slot="chat"></div>
+          <details class="pal-drawer pal-settings">
+            <summary>AI provider settings</summary>
+            <div data-ns-slot="settings"></div>
+          </details>
+          <details class="pal-drawer pal-agents">
+            <summary>What the agents did</summary>
+            <div data-ns-slot="agents"></div>
+          </details>
+        </div>
+        <p class="pal-note">Your messages go only to the AI provider you set here. MyPal sees what is on this page and nothing else. MyZenn does not receive or store what you type.</p>
+      </section>
+    </div>
+
+    <section id="tools" class="band tools" aria-labelledby="tools-heading">
+      <div class="band-head">
+        <h2 id="tools-heading">All 18 MySanctuary tools</h2>
+        <p>Four run on this page. The others open on myzenn.com.</p>
+      </div>
+      <div id="catalog-list" class="catalog"></div>
+    </section>
+
+    <section id="how" class="band how" aria-labelledby="how-heading">
+      <div class="band-head">
+        <h2 id="how-heading">How MyPal works here</h2>
+      </div>
+      <dl class="facts">
+        <div>
+          <dt>It runs in your browser.</dt>
+          <dd>MyPal is an open agent network published as a plain file. Your browser loads and runs it. There is no MyZenn server in between.</dd>
+        </div>
+        <div>
+          <dt>You choose the AI provider.</dt>
+          <dd>Messages go from your browser straight to the provider and key you set. MyZenn never receives your key or your messages.</dd>
+        </div>
+        <div>
+          <dt>You start every exercise.</dt>
+          <dd>MyPal can suggest an exercise. It only starts when you press Start.</dd>
+        </div>
+        <div>
+          <dt>Help does not wait for the AI.</dt>
+          <dd>If a message suggests you may be in danger, this page shows helplines at once, before any model replies, even with no provider set.</dd>
+        </div>
+      </dl>
+      <p class="files">Inspect it yourself: <a href="myzenn_sanctuary.network.json">MyPal's network file</a> and <a href="agent-manifest.json">this site's agent manifest</a>.</p>
+    </section>
+
+    <section id="for-sites" class="band for-sites" aria-labelledby="for-sites-heading">
+      <div class="band-head">
+        <h2 id="for-sites-heading">Offer MyZenn support on your own agentic website</h2>
+        <p>MyZenn publishes a calm companion network that any agentic website can load. It runs in your visitor's browser on their own key. Your visitor approves before their browser contacts MyZenn, and MyZenn's agents get none of your site's private data unless you allow a field.</p>
+      </div>
+      <div class="url-row">
+        <code class="network-url" data-network-url>agents/myzenn_calm</code>
+        <button id="copy-network-url" class="btn quiet" type="button">Copy address</button>
+      </div>
+      <p>Add the address to the tools of an agent in your network:</p>
+      <pre class="snippet"><code>"tools": ["<span data-network-url>agents/myzenn_calm</span>"]</code></pre>
+      <p class="files"><a href="agents/myzenn_calm.network.json">Read the calm network file</a> and <a href="agents/agent-manifest.json">its manifest</a>.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>MyZenn Open Sanctuary offers self-help practices. It is not medical care, therapy or a crisis service.</p>
+    <p><a href="https://myzenn.com">myzenn.com</a></p>
+  </footer>
+
+  <aside id="support" class="support" aria-labelledby="support-title" hidden></aside>
+</body>
+</html>

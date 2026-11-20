@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "description": "Spec check fixture: loop_b_front."
+  },
+  "llm_config": {
+    "model_name": "check-model"
+  },
+  "tools": [
+    {
+      "name": "loop_b_front",
+      "function": {
+        "description": "loop_b_front, a spec check fixture"
+      },
+      "instructions": "Call each tool once, then summarise what happened.",
+      "tools": [
+        "/checks/cycle-a/loop_a"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "description": "Spec check fixture: caller."
+  },
+  "llm_config": {
+    "model_name": "check-model"
+  },
+  "tools": [
+    {
+      "name": "caller",
+      "function": {
+        "description": "caller, a spec check fixture"
+      },
+      "instructions": "Call each tool once, then summarise what happened.",
+      "tools": [
+        "/checks/sealed/sealed"
+      ]
+    }
+  ]
+}

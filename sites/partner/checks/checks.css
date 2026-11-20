@@ -1,0 +1,33 @@
+/* Spec checks page. Builds on the planner's tokens in ../styles.css. */
+.checks-page { padding: 8px var(--gutter) 56px; max-width: 900px; }
+.checks-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin: 16px 0 12px; }
+.checks-lede { color: var(--ink-soft); max-width: 70ch; }
+.checks-summary { color: var(--ink-soft); font-size: var(--t-s); }
+.checks-list { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 14px; }
+.check {
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.check-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.check-head h2 { margin: 0; flex: 1 1 18rem; font-size: var(--t-l); }
+.check-state { font-size: var(--t-s); font-weight: 600; color: var(--ink-soft); }
+.check[data-state="pass"] { border-color: var(--ok); }
+.check[data-state="pass"] .check-state { color: var(--ok); }
+.check[data-state="fail"] { border-color: var(--exam); }
+.check[data-state="fail"] .check-state { color: var(--exam); }
+.check-rule { color: var(--ink-soft); font-size: var(--t-s); margin: 6px 0 0; }
+.check-result:empty { display: none; }
+.check-result { margin-top: 12px; }
+.check-label { font-size: var(--t-xs); font-weight: 600; color: var(--ink-soft); margin: 0 0 4px; }
+.check-message {
+  margin: 0 0 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--paper);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 400 var(--t-s)/1.5 var(--font);
+}
+.check-evidence { margin: 0; font-size: var(--t-s); }

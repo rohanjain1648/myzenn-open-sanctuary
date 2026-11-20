@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "description": "Spec check fixture: front."
+  },
+  "llm_config": {
+    "model_name": "check-model"
+  },
+  "tools": [
+    {
+      "name": "front",
+      "function": {
+        "description": "front, a spec check fixture"
+      },
+      "instructions": "Call each tool once, then summarise what happened.",
+      "tools": [
+        "ghost_agent"
+      ]
+    }
+  ]
+}

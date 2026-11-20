@@ -1,0 +1,4 @@
+# Keep LF everywhere: the calm companion tool bundle is pinned by an SRI digest of
+# its exact bytes, and CRLF on checkout would break it.
+* text=auto eol=lf
+*.png binary

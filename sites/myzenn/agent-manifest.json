@@ -1,0 +1,101 @@
+{
+  "brand": "MyPal",
+  "networks": [
+    {
+      "name": "myzenn_sanctuary",
+      "front_man": "mypal",
+      "hocon": "./myzenn_sanctuary.network.json",
+      "description": "Tell MyPal how you feel. It can help you name it and start a calming exercise on this page.",
+      "tags": [
+        "wellbeing",
+        "self-help",
+        "agentified-website"
+      ],
+      "sample_queries": [
+        "I have an exam tomorrow and my chest feels tight. Can you help me calm down?",
+        "I feel bad but I cannot say exactly how. Can you help me figure it out?",
+        "I keep putting off my chemistry revision. Help me focus for 25 minutes on chapter 4.",
+        "What else does MySanctuary have for falling asleep?",
+        "Can you diagnose whether I have anxiety disorder?"
+      ]
+    }
+  ],
+  "related_networks": [
+    {
+      "name": "myzenn_calm",
+      "url": "./agents/myzenn_calm",
+      "manifest": "./agents/agent-manifest.json",
+      "description": "MyZenn's portable calm companion, for other agentic websites to load."
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "MyPal uses local agents and this page's own actions only."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "myzenn_sanctuary",
+    "front_man": "mypal",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#007e7d"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "myzenn_sanctuary",
+        "front_man": "mypal",
+        "aliases": [
+          "myzenn_sanctuary",
+          "mypal"
+        ],
+        "url": "myzenn_sanctuary"
+      },
+      {
+        "network": "myzenn_calm",
+        "front_man": "calm_companion",
+        "aliases": [
+          "myzenn_calm",
+          "calm_companion"
+        ],
+        "url": "agents/myzenn_calm"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "agentTools": [
+      "get_sanctuary_state",
+      "get_sanctuary_catalog",
+      "get_support_resources",
+      "show_support",
+      "start_breathing",
+      "start_grounding",
+      "open_emotion_wheel",
+      "start_focus_anchor"
+    ]
+  }
+}

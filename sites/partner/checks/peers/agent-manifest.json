@@ -1,0 +1,55 @@
+{
+  "brand": "Spec check fixture",
+  "networks": [
+    {
+      "name": "calm",
+      "front_man": "front",
+      "hocon": "./calm.network.json"
+    },
+    {
+      "name": "broken",
+      "front_man": "front",
+      "hocon": "./broken.network.json"
+    },
+    {
+      "name": "p1",
+      "front_man": "front",
+      "hocon": "./p1.network.json"
+    },
+    {
+      "name": "p2",
+      "front_man": "front",
+      "hocon": "./p2.network.json"
+    },
+    {
+      "name": "p3",
+      "front_man": "front",
+      "hocon": "./p3.network.json"
+    },
+    {
+      "name": "p4",
+      "front_man": "front",
+      "hocon": "./p4.network.json"
+    },
+    {
+      "name": "p5",
+      "front_man": "front",
+      "hocon": "./p5.network.json"
+    }
+  ],
+  "llm_router": {
+    "base_url": "browser://mock",
+    "mock": true,
+    "byok_router": "browser://mock",
+    "note": "Deterministic mock: calls each tool once. Needs no key."
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "The checks page trusts its own origin at run time; everything else is denied."
+  },
+  "deployment": {
+    "mode": "static"
+  }
+}

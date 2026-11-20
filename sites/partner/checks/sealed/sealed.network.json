@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "description": "Spec check fixture: front."
+  },
+  "llm_config": {
+    "model_name": "check-model"
+  },
+  "tools": [
+    {
+      "name": "front",
+      "function": {
+        "description": "front, a spec check fixture"
+      },
+      "instructions": "Call each tool once, then summarise what happened.",
+      "tools": [
+        "echo_tool"
+      ]
+    },
+    {
+      "name": "echo_tool",
+      "class": "Echo",
+      "function": {
+        "description": "Echo the arguments.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      "allow": {
+        "to_downstream": {
+          "sly_data": []
+        }
+      }
+    }
+  ]
+}

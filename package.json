@@ -1,0 +1,15 @@
+{
+  "name": "myzenn-open-sanctuary",
+  "private": true,
+  "description": "MyZenn Open Sanctuary: an open agentic website, a portable calm-companion network, and a demo partner site that loads it.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "node tools/build.mjs --check",
+    "serve": "node tools/serve.mjs",
+    "test": "node --test \"sites/myzenn/tests/*.test.mjs\" \"sites/partner/tests/*.test.mjs\" \"tests/*.test.mjs\""
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "brand": "Spec check fixture",
+  "networks": [
+    {
+      "name": "denied",
+      "front_man": "caller",
+      "hocon": "./denied.network.json"
+    }
+  ],
+  "llm_router": {
+    "base_url": "browser://mock",
+    "mock": true,
+    "byok_router": "browser://mock",
+    "note": "Deterministic mock: calls each tool once. Needs no key."
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "The checks page trusts its own origin at run time; everything else is denied."
+  },
+  "deployment": {
+    "mode": "static"
+  }
+}

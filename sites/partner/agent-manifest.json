@@ -1,0 +1,89 @@
+{
+  "brand": "Exam Week Planner",
+  "networks": [
+    {
+      "name": "exam_planner",
+      "front_man": "study_planner",
+      "hocon": "./exam_planner.network.json",
+      "description": "Ask the planner to read or change your revision week. If stress gets in the way, it can bring in MyZenn's calm companion, with your OK.",
+      "tags": [
+        "study",
+        "planner",
+        "demo-partner",
+        "agentified-website"
+      ],
+      "sample_queries": [
+        "What is left on my plan for today?",
+        "Move my physics optics block from tonight to Friday at 17:00.",
+        "Chemistry is tomorrow and my heart is racing. I cannot focus.",
+        "Add a 30-minute maths block on Sunday at 15:00.",
+        "Email my teacher that I am sick tomorrow."
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [
+    "https://myzenn-open-sanctuary.vercel.app"
+  ],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "The planner contacts only MyZenn's calm companion, and only after the student agrees each time."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "exam_planner",
+    "front_man": "study_planner",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#2446d8"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "exam_planner",
+        "front_man": "study_planner",
+        "aliases": [
+          "exam_planner",
+          "study_planner"
+        ],
+        "url": "exam_planner"
+      }
+    ],
+    "imports": [
+      {
+        "reference": "myzenn_calm",
+        "url": "https://myzenn-open-sanctuary.vercel.app/agents/myzenn_calm",
+        "label": "MyZenn calm companion"
+      }
+    ],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "agentTools": [
+      "get_week_plan",
+      "add_block",
+      "move_block",
+      "mark_block_done"
+    ]
+  }
+}

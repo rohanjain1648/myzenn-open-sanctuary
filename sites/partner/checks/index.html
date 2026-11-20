@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spec checks</title>
+  <meta name="description" content="Run the failures the Worldwide Agentic Web MVP spec says must stop visibly, live in your browser, through the planner's own runtime. No key needed.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,800&display=swap">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="checks.css">
+  <script type="module" src="page.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../"><span class="mark" aria-hidden="true"></span>Exam Week Planner</a>
+    <p class="demo-tag">A fictional demo site. This page checks the runtime it uses.</p>
+  </header>
+
+  <main class="checks-page">
+    <h1 class="checks-title">Spec checks</h1>
+    <p class="checks-lede">The Worldwide Agentic Web MVP spec (section 6) says a runtime must stop an invalid network, a composition cycle, an over-budget request and a denied origin, with visible errors. These checks run each case live in this tab, through the same runtime as the planner, on its built-in mock model. No key is needed and nothing is sent to any AI provider.</p>
+    <p class="row"><button id="run-all" class="btn" type="button">Run all checks</button> <span id="summary" class="checks-summary" role="status"></span></p>
+    <ul id="checks" class="checks-list"></ul>
+    <p class="files">The fixture networks are in <a href="./peers/agent-manifest.json">checks/</a>. The cross-site checks with MyZenn, such as consent before contact and the key never reaching MyZenn, run on <a href="../">the planner</a> and in the repository's tests.</p>
+  </main>
+</body>
+</html>

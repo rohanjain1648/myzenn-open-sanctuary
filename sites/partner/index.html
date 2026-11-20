@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exam Week Planner</title>
+  <meta name="description" content="A fictional demo partner site. Plan revision around exams with an agent, which can load MyZenn's calm companion into your browser when stress gets in the way.">
+  <meta name="theme-color" content="#f5f7fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1424" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="alternate" type="application/json" href="agent-manifest.json" title="Agent manifest">
+  <script type="module" src="app.js"></script>
+  <script type="module" src="site.js"></script>
+</head>
+<body>
+  <a class="skip" href="#week-scroll">Skip to the plan</a>
+
+  <header class="topbar">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true"></span>Exam Week Planner</a>
+    <p class="demo-tag">A fictional demo site. It shows how any agentic website can bring in MyZenn's calm companion.</p>
+  </header>
+
+  <main class="layout">
+    <section class="plan" aria-labelledby="countdown">
+      <h1 id="countdown">Chemistry exam tomorrow, 09:30.</h1>
+      <p id="countdown-sub" class="sub">Wednesday, 15:30 in this demo week.</p>
+
+      <div id="support-banner" class="support-banner" role="region" aria-labelledby="support-banner-title" hidden>
+        <h2 id="support-banner-title" tabindex="-1">You do not have to handle this alone</h2>
+        <p>If you might act on thoughts of hurting yourself, or you are in danger now, call your local emergency number: 112 in India, 911 in the US.</p>
+        <p>Free, 24-hour helplines: Tele-MANAS <a href="tel:14416">14416</a> in India, or call or text <a href="tel:988">988</a> in the US.</p>
+        <p class="row"><a id="myzenn-support-link" class="btn" href="https://myzenn-open-sanctuary.vercel.app/#support">See every helpline on MyZenn</a> <button id="support-close" class="btn quiet" type="button">Close</button></p>
+      </div>
+
+      <div id="planner-suggestion" class="suggestion" role="region" aria-label="Change suggested by the planner" aria-live="polite" hidden></div>
+
+      <div id="week-scroll" class="week-scroll" tabindex="0" role="region" aria-label="This week's plan">
+        <div id="week" class="week"></div>
+      </div>
+      <div id="block-detail" class="block-detail" aria-live="polite" hidden></div>
+
+      <div class="below-grid">
+        <form id="add-form" class="add-form" aria-labelledby="add-form-title" novalidate>
+          <h2 id="add-form-title">Add to the plan</h2>
+          <div class="fields">
+            <label for="add-what">What</label>
+            <select id="add-what" name="what"></select>
+            <label for="add-day">Day</label>
+            <select id="add-day" name="day"></select>
+            <label for="add-start">Start</label>
+            <input id="add-start" name="start" type="time" value="16:30" step="900" required>
+            <label for="add-minutes">Length</label>
+            <select id="add-minutes" name="minutes"></select>
+            <label for="add-title">Title</label>
+            <input id="add-title" name="title" maxlength="60" autocomplete="off" placeholder="Optional">
+          </div>
+          <p id="add-error" class="field-error" role="alert"></p>
+          <button class="btn" type="submit">Add to the plan</button>
+        </form>
+
+        <section class="profile" aria-labelledby="profile-title">
+          <h2 id="profile-title">Your private profile</h2>
+          <p class="profile-note">It stays on this site. The planner's published rule lets one field, your country, go to MyZenn, and only when you allow it here.</p>
+          <dl class="profile-facts">
+            <div><dt>Name</dt><dd id="profile-name"></dd></div>
+            <div><dt>Email</dt><dd id="profile-email"></dd></div>
+            <div><dt>School</dt><dd id="profile-school"></dd></div>
+            <div><dt>Mock scores</dt><dd id="profile-scores"></dd></div>
+            <div><dt>Country</dt><dd id="profile-country"></dd></div>
+          </dl>
+          <label class="toggle"><input id="share-country" type="checkbox"> Let MyZenn see my country, so it can show the right helpline</label>
+        </section>
+      </div>
+    </section>
+
+    <aside class="side" aria-label="Planner assistant">
+      <section id="assistant" class="assistant" aria-labelledby="assistant-heading">
+        <h2 id="assistant-heading" class="visually-hidden">Planner assistant</h2>
+        <p id="assistant-status" class="assistant-status" role="status">Connecting the planner's assistant. If this message stays, it could not load. The plan still works.</p>
+        <div id="agent-app">
+          <div data-ns-slot="header"></div>
+          <div data-ns-slot="chat"></div>
+          <details class="drawer pal-settings">
+            <summary>AI provider settings</summary>
+            <div data-ns-slot="settings"></div>
+          </details>
+          <details class="drawer">
+            <summary>Agent trace</summary>
+            <div data-ns-slot="agents"></div>
+          </details>
+        </div>
+      </section>
+
+      <section id="inspector" class="inspector" aria-labelledby="inspector-title">
+        <h2 id="inspector-title">What crossed to MyZenn</h2>
+        <div class="inspector-body" aria-live="polite"></div>
+      </section>
+    </aside>
+  </main>
+
+  <section class="explainer" aria-labelledby="explainer-title">
+    <h2 id="explainer-title">How this demo works</h2>
+    <dl class="steps">
+      <div>
+        <dt>Two separate websites</dt>
+        <dd>This planner and MyZenn are different sites with different agent networks. The planner's network names MyZenn's calm companion, and its <a href="links.json">links.json</a> points that name at MyZenn's published network.</dd>
+      </div>
+      <div>
+        <dt>Your browser asks first</dt>
+        <dd>When you tell the planner that stress is getting in the way, it asks you before your browser contacts MyZenn. Then it loads MyZenn's network into this tab and runs it here, on your AI key.</dd>
+      </div>
+      <div>
+        <dt>Your data stays put</dt>
+        <dd>MyZenn's site never receives your messages, your key or your profile. Only your country can cross, and only if you allow it. The panel beside the chat lists every request this page made.</dd>
+      </div>
+    </dl>
+    <p class="files">Read the files: <a href="exam_planner.network.json">the planner's network</a>, <a href="agent-manifest.json">its manifest</a>, and <a id="myzenn-home-link" href="https://myzenn-open-sanctuary.vercel.app/">MyZenn's site</a>, which publishes the calm companion. <a href="checks/">Run the spec checks</a> to see the runtime stop a denied origin, an invalid network, a cycle and an over-budget request.</p>
+  </section>
+
+  <footer class="footer">
+    <p>Exam Week Planner is a fictional demo site. The student, the school and the plan are made up.</p>
+  </footer>
+</body>
+</html>

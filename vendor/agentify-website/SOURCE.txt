@@ -1,0 +1,1 @@
+cognizant-ai-labs/agentic-web @ 3c18918 (2026-11-12), skills/agentify-website
